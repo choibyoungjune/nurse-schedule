@@ -29,27 +29,20 @@ public class Main {
         nurses.add(new Nurse("유은경", 17));
         nurses.add(new Nurse("구다해", 18));
 
-        Schedule schedule;
-        for(int i=0; i<31; i++) {
-            System.out.println(i);
-            schedule = new Schedule(nurses, 5, 4, 3);
-            schedule.settingSchedule();
-            month_schedule.add(schedule.getSchedule());
-            schedule = null;
-        }
-        System.out.println("1일 day 근무자 : ");
-        for(Nurse one_day : month_schedule.get(0).get("day")) {
-            System.out.println(one_day.getName());
-        }
+        WorkingDay wd = new WorkingDay(5,4,3,nurses);
+        month_schedule.add(wd.settingSchedule());
 
-        System.out.println("2일 day 근무자 : ");
-        for(Nurse one_day : month_schedule.get(1).get("day")) {
-            System.out.println(one_day.getName());
+        System.out.println("day 멤버: ");
+        for(Nurse n : month_schedule.get(0).get("day")) {
+            System.out.print(" "+n.getName());
         }
-
-        System.out.println("3일 day 근무자 : ");
-        for(Nurse one_day : month_schedule.get(2).get("day")) {
-            System.out.println(one_day.getName());
+        System.out.println("\neven 멤버: ");
+        for(Nurse n : month_schedule.get(0).get("even")) {
+            System.out.print(" "+n.getName());
+        }
+        System.out.println("\nnight 멤버: ");
+        for(Nurse n : month_schedule.get(0).get("night")) {
+            System.out.print(" "+n.getName());
         }
     }
 }
